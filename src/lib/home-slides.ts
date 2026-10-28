@@ -1,0 +1,6 @@
+type HomeSlide = {slug:string;path?:string;image:string;width:number;height:number;title:string;alt:{id:string;en:string}};
+export const homeSlides: HomeSlide[] = [
+  {slug:'instax-sq40',image:'/banners/instax-sq40.jpg',width:1600,height:893,title:'Instax SQ40',alt:{id:'Banner Instax SQ40 dengan desain kamera serta fitur Auto Exposure, Format Square, dan Selfie Mode',en:'Instax SQ40 banner showing the camera design, Auto Exposure, Square Format, and Selfie Mode'}},
+  {slug:'instax-mini-13',path:'/products?category=instax-camera',image:'/banners/instax-mini-13.png',width:1600,height:893,title:'Instax Mini 13',alt:{id:'Banner Instax Mini 13 dengan pilihan warna pastel, Auto Exposure dan Flash, Dual Self-Timer, serta Close-Up dan Selfie Mode',en:'Instax Mini 13 banner with pastel colors, Auto Exposure and Flash, Dual Self-Timer, and Close-Up and Selfie Mode'}},
+  {slug:'instax-mini-evo-gentle-rose',path:'/products?category=instax-camera',image:'/banners/instax-mini-evo-gentle-rose.png',width:1600,height:893,title:'Instax Mini Evo Gentle Rose',alt:{id:'Banner kamera Instax Mini Evo Gentle Rose dengan efek kreatif, layar LCD, tuas cetak, dan konektivitas smartphone',en:'Instax Mini Evo Gentle Rose banner showing creative effects, an LCD screen, a print lever, and smartphone connectivity'}},
+];

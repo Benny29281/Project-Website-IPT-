@@ -1,0 +1,9 @@
+'use client';
+import {useState} from 'react';
+import {Camera} from 'lucide-react';
+import Image from 'next/image';
+export function ProductImage({src, alt, className = '', priority = false}: {src: string; alt: string; className?: string; priority?: boolean}) {
+  const [failed, setFailed] = useState(false);
+  if (failed || !src) return <div className={`product-photo-placeholder ${className}`} role="img" aria-label={alt}><Camera size={42} strokeWidth={1.2}/><span>{alt}</span><small>Foto segera tersedia · Photo coming soon</small></div>;
+  return <Image className={className} src={src} alt={alt} width={1000} height={1000} sizes={className.includes('detail-photo') ? '(max-width: 620px) 100vw, 600px' : '(max-width: 620px) 50vw, (max-width: 900px) 45vw, 420px'} loading={priority ? 'eager' : 'lazy'} onError={() => setFailed(true)}/>;
+}

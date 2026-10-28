@@ -1,0 +1,16 @@
+'use client';
+import {useCallback,useEffect,useState} from 'react';
+import Link from 'next/link';
+import {CheckCircle2,Clock3,RefreshCw,CircleAlert} from 'lucide-react';
+import type {Locale} from '@/lib/content';
+import type {CartItem} from '@/lib/commerce';
+import {useCart,money} from './cart-provider';
+type Result = {orderNumber:string;paymentStatus:string;total:number;items:CartItem[];paymentUrl?:string};
+export function PaymentResult({locale,orderNumber}: {locale: Locale;orderNumber: string}) {
+  const {complete,hydrated}=useCart();const en=locale==='en';const [result,setResult]=useState<Result|null>(null);const [loading,setLoading]=useState(true);const [error,setError]=useState('');
+  const refresh=useCallback(async()=>{setLoading(true);setError('');try {const response=await fetch(`/api/checkout/status?order=${encodeURIComponent(orderNumber)}`,{cache:'no-store'});const data=await response.json();if (!response.ok) throw new Error(en ? 'We could not verify this order. Use the same browser as checkout, or contact our team.' : 'Status pesanan belum dapat diverifikasi. Gunakan browser yang sama saat checkout, atau hubungi tim kami.');setResult(data);} catch(err) {setError(err instanceof Error ? err.message : 'Request failed');} finally {setLoading(false)}},[orderNumber,en]);
+  useEffect(()=>{void refresh()},[refresh]);
+  useEffect(()=>{if (hydrated && result?.paymentStatus==='paid') complete(result.orderNumber,result.items)},[result,hydrated,complete]);
+  const paid=result?.paymentStatus==='paid';const pending=result && ['creating','pending'].includes(result.paymentStatus);
+  return <div className="payment-result">{paid ? <CheckCircle2 size={56}/> : pending ? <Clock3 size={56}/> : <CircleAlert size={56}/>}<h1>{paid ? (en ? 'Payment confirmed.' : 'Pembayaran terkonfirmasi.') : loading && !result ? (en ? 'Checking payment…' : 'Memeriksa pembayaran…') : pending ? (en ? 'Awaiting payment confirmation.' : 'Menunggu konfirmasi pembayaran.') : (en ? 'Payment status' : 'Status Pembayaran')}</h1>{orderNumber && <p className="order-number">{orderNumber}</p>}{result && <><p>{paid ? (en ? 'Thank you. Our team will prepare your order.' : 'Terima kasih. Tim kami akan menyiapkan pesanan Anda.') : pending ? (en ? 'You can check again after completing your payment.' : 'Periksa kembali setelah Anda menyelesaikan pembayaran.') : (en ? 'Payment has not been confirmed. Contact our team for assistance.' : 'Pembayaran belum terkonfirmasi. Hubungi tim kami untuk bantuan.')}</p><strong>{money(result.total,locale)}</strong></>}{error && <p className="form-error" role="alert">{error}</p>}<div className="payment-result-actions"><button className="button" onClick={()=>void refresh()} disabled={loading}><RefreshCw size={16}/>{loading ? (en ? 'Checking…' : 'Memeriksa…') : (en ? 'Check Payment Status' : 'Periksa Status Pembayaran')}</button>{pending && result?.paymentUrl && <a className="button" href={result.paymentUrl}>{en ? 'Continue Payment' : 'Lanjutkan Pembayaran'}</a>}<Link className="text-link" href={`/${locale}/${paid ? 'products' : 'contact'}`}>{paid ? (en ? 'Continue Shopping' : 'Lanjutkan Belanja') : (en ? 'Contact Our Team' : 'Hubungi Tim Kami')}</Link></div></div>;
+}

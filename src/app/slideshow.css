@@ -1,0 +1,29 @@
+.home-slideshow { width: min(1600px, calc(100% - 48px)); margin: 22px auto 30px; background: #f4f7fb; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.slideshow-viewport { position: relative; aspect-ratio: 1600 / 893; touch-action: pan-y pinch-zoom; background: #f4f7fb; }
+.slideshow-slide, .slideshow-image-link { position: absolute; inset: 0; display: block; }
+.slideshow-image-link img { object-fit: contain; }
+.slide-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border: 1px solid #d7e1eb; border-radius: 50%; background: #fffffff0; color: #194570; box-shadow: 0 2px 12px #00000014; display: grid; place-items: center; z-index: 2; }
+.slide-arrow:hover { background: var(--primary); color: white; border-color: var(--primary); }
+.slide-prev { left: 16px; }
+.slide-next { right: 16px; }
+.slideshow-controls { display: flex; align-items: center; gap: 16px; min-height: 64px; padding: 10px 22px; background: white; }
+.slideshow-caption { display: inline-flex; align-items: center; gap: 12px; flex: 1; min-width: 0; font-size: 13px; font-weight: 600; color: var(--primary-dark); }
+.slideshow-caption svg { flex-shrink: 0; }
+.slide-dots { display: flex; align-items: center; gap: 1px; }
+.slide-dot { padding: 14px 7px; min-width: 28px; min-height: 44px; background: none; border: 0; display: grid; place-items: center; }
+.slide-dot span { display: block; width: 8px; height: 8px; background: #c9d5e1; border-radius: 10px; transition: width .2s, background .2s; }
+.slide-dot.active span { width: 25px; background: var(--primary); }
+.slide-play { width: 44px; height: 44px; padding: 0; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--primary-dark); background: white; }
+.slide-count { font-size: 11px; min-width: 33px; color: var(--muted); white-space: nowrap; }
+@media (max-width: 700px) {
+  .home-slideshow { width: calc(100% - 24px); margin: 12px auto 20px; border-radius: 6px; }
+  .slide-arrow { width: 36px; height: 36px; }
+  .slide-prev { left: 8px; }
+  .slide-next { right: 8px; }
+  .slideshow-controls { flex-wrap: wrap; padding: 9px 12px; gap: 0 7px; }
+  .slideshow-caption { flex-basis: 100%; font-size: 12px; padding-bottom: 5px; }
+  .slide-dots { margin-right: auto; }
+  .slide-play { width: 38px; height: 38px; }
+  .slide-count { text-align: right; }
+}
+@media (prefers-reduced-motion: reduce) { .slide-dot span { transition: none; } }

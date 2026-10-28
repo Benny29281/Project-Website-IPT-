@@ -1,0 +1,1 @@
+export default function NotFound() {return <html lang="id"><body style={{fontFamily:'Arial,sans-serif',background:'#f7f7f2',color:'#102f3a',padding:'15vh 8vw'}}><p>404 / INDONESIA PACIFIC TRADE</p><h1>Halaman tidak ditemukan.</h1><p>Alamat yang Anda cari belum tersedia atau telah dipindahkan.</p><a href="/id">Kembali ke Beranda →</a></body></html>;}

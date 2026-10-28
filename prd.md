@@ -1,6 +1,8 @@
 # Product Requirements Document (PRD)
 ## Website Resmi PT Indonesia Pacific Trade
 
+> **Pembaruan ruang lingkup — 28 Oktober 2026:** Pengguna meminta website mendukung keranjang dan checkout dengan pembayaran online. Keputusan ini menggantikan pengecualian e-commerce pada bagian 5.2 untuk pengembangan saat ini. Integrasi awal memakai Midtrans Snap Redirect dalam sandbox; harga produk, ongkir, kredensial merchant, dan uji transaksi masih harus dilengkapi sebelum pembayaran diaktifkan. Enam produk referensi mencakup Instax SQ40, Wide 400 Black, Wide 400 Green, Mini Pink Lemonade, Square Black Frame, dan Wide Twin Pack.
+
 | Item | Keterangan |
 |---|---|
 | Versi dokumen | 1.0 (Draft) |
