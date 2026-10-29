@@ -1,25 +1,25 @@
-import Link from 'next/link';
-import {ArrowRight, ArrowUpRight, Film, Camera, ScanLine, Cpu} from 'lucide-react';
-import {type Locale} from '@/lib/content';
-import {brandCopy, productCategories} from '@/lib/brand-content';
-import {ProductCards} from '@/components/catalog';
-import {HomeSlideshow} from '@/components/home-slideshow';
+import {ArrowUpRight,MapPin,Phone,Mail} from 'lucide-react';
+import {notFound} from 'next/navigation';
+import {isSiteLocale,languageAlternates,type SiteLocale} from '@/lib/locales';
+import {landingCopy} from '@/lib/landing-content';
+import {companyInfo} from '@/lib/company-info';
+import {CompanyHomeIntro} from '@/components/company-home-intro';
+import {LandingContactForm} from '@/components/landing-contact-form';
+import {MarketReach} from '@/components/market-reach';
 
-export async function generateMetadata({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params;
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-  const title = 'Indonesia Pacific Trade | Consumer Imaging & Photography';
-  const description = locale === 'id' ? 'Jelajahi kamera Instax, film instan, Fujifilm QuickSnap, dan graphic card. Pilih produk, masukkan ke keranjang, dan lanjutkan ke checkout.' : 'Explore Instax cameras, instant film, Fujifilm QuickSnap, and graphics cards. Choose your products, add them to your cart, and continue to checkout.';
-  const image = `${base}/banners/instax-sq40.jpg`;
-  return {title: {absolute: title}, description, alternates: {canonical: `${base}/${locale}`, languages: {id: `${base}/id`, en: `${base}/en`}}, openGraph: {title, description, locale: locale === 'id' ? 'id_ID' : 'en_US', type: 'website' as const, images: [image]}, twitter: {card: 'summary_large_image' as const, title, description, images: [image]}};
+export async function generateMetadata({params}: {params:Promise<{locale:SiteLocale}>}) {
+  const {locale}=await params;if (!isSiteLocale(locale)) notFound();const t=landingCopy[locale];
+  const base=process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';const title=`Indonesia Pacific Trade | ${t.business}`;const image=`${base}/images/company/cargo-barge.jpg`;
+  return {title:{absolute:title},description:t.heroText,alternates:{canonical:`${base}/${locale}`,languages:languageAlternates(base)},openGraph:{title,description:t.heroText,locale:{id:'id_ID',en:'en_US',zh:'zh_CN',ko:'ko_KR'}[locale],type:'website' as const,images:[image]},twitter:{card:'summary_large_image' as const,title,description:t.heroText,images:[image]}};
 }
-const categoryIcons = [Film, Camera, ScanLine, Cpu];
-export default async function Home({params}: {params: Promise<{locale: Locale}>}) {
-  const {locale} = await params; const t = brandCopy[locale];
-  return <main id="main" className="brand-home">
-    <h1 className="sr-only">{locale === 'id' ? 'Indonesia Pacific Trade — Kamera, Film Instan & Graphic Card' : 'Indonesia Pacific Trade — Cameras, Instant Film & Graphics Cards'}</h1>
-    <HomeSlideshow locale={locale}/>
-    <section className="core-section"><div className="container"><div className="center-heading"><h2>{t.core}</h2><p>{t.coreSub}</p></div><div className="category-grid">{productCategories.map((category,i) => {const Icon = categoryIcons[i];return <Link href={`/${locale}/products?category=${category.slug}`} className="category-card" key={category.slug}><span className="category-icon"><Icon size={57} strokeWidth={1.15}/></span><h3>{category.label[locale]}</h3><ArrowUpRight size={17}/></Link>})}</div></div></section>
-    <section className="container featured-section store-products"><div className="section-heading"><div><h2>{t.featured}</h2><p>{t.featuredSub}</p></div><Link href={`/${locale}/products`} className="text-link">{t.all}<ArrowRight size={17}/></Link></div><ProductCards locale={locale}/></section>
+export default async function Home({params}: {params:Promise<{locale:SiteLocale}>}) {
+  const {locale}=await params;if (!isSiteLocale(locale)) notFound();const t=landingCopy[locale];const email=process.env.NEXT_PUBLIC_CONTACT_EMAIL||companyInfo.email;
+  const schema={'@context':'https://schema.org','@type':'Organization',name:companyInfo.name,url:`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/${locale}`,logo:`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/brand/logo.png`,telephone:'+628211888596',address:{'@type':'PostalAddress',streetAddress:'Landmark Pluit Tower E18 No.RT.5, RT.8/RW.10, Pluit, Penjaringan',addressLocality:'Jakarta Utara',addressRegion:'DKI Jakarta',postalCode:'14450',addressCountry:'ID'},sameAs:[companyInfo.mapsUrl]};
+  return <main id="main" className="company-landing">
+    <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}}/>
+    <CompanyHomeIntro locale={locale}/>
+    <section id="market-reach" className="landing-section"><MarketReach locale={locale}/></section>
+    <section id="our-location" className="landing-section landing-location"><div className="container landing-location-grid"><div><p className="eyebrow">{t.locationTag}</p><p className="landing-section-name">{t.location}</p><h2>{t.locationTitle}</h2><p className="landing-location-text">{t.locationText}</p><div className="landing-address"><MapPin size={22}/><div><h3>{t.address}</h3><address>{companyInfo.address}</address></div></div><a href={companyInfo.mapsUrl} target="_blank" rel="noopener noreferrer" className="button">{t.directions}<ArrowUpRight size={17}/></a></div><div className="landing-map"><iframe src={companyInfo.mapsEmbed} title={t.mapTitle} width="600" height="450" loading="lazy" allowFullScreen referrerPolicy="strict-origin-when-cross-origin"/></div></div></section>
+    <section id="contact-us" className="landing-section"><div className="container landing-contact-grid"><div><p className="eyebrow">{t.contactTag}</p><p className="landing-section-name">{t.contact}</p><h2>{t.contactTitle}</h2><p>{t.contactText}</p><a className="landing-contact-detail" href={companyInfo.phoneHref}><Phone size={21}/><span><small>{t.phone}</small><strong>{companyInfo.phone}</strong></span><ArrowUpRight size={18}/></a>{email && <a className="landing-contact-detail" href={`mailto:${email}`}><Mail size={21}/><span><small>{t.email}</small><strong>{email}</strong></span><ArrowUpRight size={18}/></a>}</div><LandingContactForm locale={locale}/></div></section>
   </main>;
 }

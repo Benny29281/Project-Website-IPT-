@@ -1,0 +1,157 @@
+.landing-header .nav { gap: 22px; }
+.landing-header .nav > a { font-size: 12px; }
+.landing-header .header-search { width: 165px; }
+.landing-header .header-inner { gap: 25px; }
+.language-picker { gap: 5px; }
+.language-picker select { max-width: 95px; border: 0; border-bottom: 1px solid #ffffff65; padding: 5px 3px; background: transparent; color: white; font: inherit; cursor: pointer; font-size: 11px; }
+.language-picker select option { background: white; color: var(--ink); }
+.landing-hero { padding: 74px 0 66px; background: linear-gradient(110deg,#f3f8ff,#ffffff); border-bottom: 1px solid #e8eef6; }
+.landing-hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 85px; align-items: center; }
+.landing-hero h1 { font-size: clamp(35px,4vw,56px); color: #153653; font-weight: 600; white-space: pre-line; letter-spacing: -1.8px; line-height: 1.15; }
+.landing-hero .eyebrow { display: flex; align-items: center; gap: 10px; font-size: 9px; letter-spacing: 1.8px; }
+.landing-hero .eyebrow > span { display: block; width: 23px; height: 2px; background: var(--primary); flex-shrink: 0; }
+.landing-hero-text { margin-top: 24px; font-size: 13px; line-height: 1.95; max-width: 600px; }
+.landing-hero-actions { display: flex; align-items: center; gap: 25px; flex-wrap: wrap; margin-top: 28px; }
+.landing-business-card { padding: 30px 35px; border: 1px solid #c9ddf2; background: #2477d1; color: white; border-radius: 9px; box-shadow: 0 12px 28px #1d65a414; }
+.landing-business-card > svg { margin-bottom: 15px; }
+.landing-business-card > span { font-size: 9px; letter-spacing: 1.3px; opacity: .85; }
+.landing-business-card dl { margin: 18px 0 0; }
+.landing-business-card dl > div { padding: 14px 0; border-top: 1px solid #ffffff38; }
+.landing-business-card dt { font-size: 8px; letter-spacing: 1.2px; opacity: .8; }
+.landing-business-card dd { margin: 5px 0 0; font-size: 16px; line-height: 1.5; font-weight: 550; }
+.company-landing .home-slideshow { max-width: 1240px; margin-top: 38px; }
+.landing-section { padding: 80px 0; scroll-margin-top: 90px; }
+.landing-section-name { color: var(--primary); font-size: 13px; font-weight: 650; margin-bottom: 15px; }
+.landing-about { display: grid; grid-template-columns: 1fr 1fr; gap: 85px; align-items: start; }
+.landing-about h2 { font-size: 38px; color: #173b5b; font-weight: 550; line-height: 1.25; }
+.landing-about .text-link { margin-top: 25px; }
+.landing-about > div > p:not(.eyebrow):not(.landing-section-name) { font-size: 13px; line-height: 2; margin-bottom: 20px; }
+.landing-markets { padding-top: 22px; border-top: 1px solid var(--line); margin-top: 25px; }
+.landing-markets > span { font-size: 8px; font-weight: 600; letter-spacing: 1.1px; color: #54708a; }
+.landing-markets > div { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 13px; }
+.landing-markets > div > span { border-radius: 20px; padding: 6px 13px; background: #eef5fe; color: var(--primary-dark); font-size: 11px; }
+.landing-services { background: #f3f7fc; border-top: 1px solid #e8eef6; border-bottom: 1px solid #e8eef6; }
+.landing-heading { max-width: 700px; }
+.landing-heading h2 { font-size: 37px; margin-bottom: 14px; color: #173b5b; }
+.landing-heading p:last-child { font-size: 13px; line-height: 1.9; }
+.landing-service-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 22px; margin: 35px 0 28px; }
+.landing-service-grid article { background: white; border: 1px solid #e0e9f2; border-radius: 7px; padding: 26px 23px; }
+.landing-service-icon { color: var(--primary); display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+.landing-service-icon > span { font-size: 10px; color: #89a2b9; }
+.landing-service-grid h3 { font-size: 18px; margin-bottom: 13px; color: #25435e; }
+.landing-service-grid p { font-size: 12px; line-height: 1.9; }
+.landing-heading-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 35px; }
+.landing-heading-row > .text-link { flex-shrink: 0; }
+.landing-product-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 25px; }
+.landing-product-card > div { aspect-ratio: 1; position: relative; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.landing-product-card img { height: 100%; object-fit: contain; transition: transform .25s; }
+.landing-product-card:hover img { transform: scale(1.025); }
+.landing-product-card > div > span { position: absolute; bottom: 12px; right: 12px; width: 33px; height: 33px; border-radius: 50%; background: white; color: var(--primary); display: grid; place-items: center; }
+.landing-product-card h3 { font-size: 20px; color: #173b5b; margin: 20px 0 12px; }
+.landing-product-card p { font-size: 12px; line-height: 1.85; }
+.landing-product-link { display: flex; gap: 12px; align-items: center; font-size: 11px; font-weight: 600; color: var(--primary); margin-top: 18px; }
+.landing-location { background: #f3f7fc; }
+.landing-location-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 65px; align-items: center; }
+.landing-location h2 { color: #173b5b; font-size: 34px; line-height: 1.3; }
+.landing-location-text { font-size: 12px; line-height: 1.9; margin-top: 20px; }
+.landing-address { display: flex; align-items: flex-start; gap: 13px; color: var(--primary); margin: 25px 0; }
+.landing-address > svg { flex-shrink: 0; }
+.landing-address h3 { font-size: 12px; margin-bottom: 8px; }
+.landing-address address { font-style: normal; color: var(--muted); font-size: 12px; line-height: 1.9; }
+.landing-map { height: 440px; border: 1px solid #d5e1ee; border-radius: 8px; overflow: hidden; background: #e4eef8; }
+.landing-map iframe { width: 100%; height: 100%; border: 0; }
+.landing-contact-grid { display: grid; grid-template-columns: 1fr 1.35fr; gap: 85px; align-items: start; }
+.landing-contact-grid h2 { font-size: 38px; color: #173b5b; line-height: 1.25; }
+.landing-contact-grid > div > p:last-of-type { font-size: 13px; line-height: 1.9; margin-top: 22px; }
+.landing-contact-detail { display: flex; align-items: center; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); color: var(--primary); }
+.landing-contact-detail:first-of-type { margin-top: 24px; }
+.landing-contact-detail small { display: block; color: var(--muted); font-size: 10px; }
+.landing-contact-detail strong { display: block; font-size: 15px; color: #244760; font-weight: 600; word-break: break-word; }
+.landing-contact-detail > svg:last-child { margin-left: auto; }
+.landing-contact-form { background: #f5f8fc; border: 1px solid #e0e8f1; border-radius: 8px; padding: 32px; }
+.landing-contact-form .form-error a { text-decoration: underline; }
+.landing-form-success { padding: 45px; display: grid; gap: 25px; color: var(--primary); border: 1px solid var(--line); border-radius: 8px; background: var(--cream); }
+.landing-form-success h3 { line-height: 1.5; }
+.company-footer-grid { display: grid; grid-template-columns: 1.15fr .8fr .8fr 1.25fr; gap: 45px; padding-bottom: 40px; }
+.company-footer-grid > div > p { font-size: 11px; line-height: 1.9; margin-top: 22px; }
+.company-footer-origin { display: block; font-size: 8px; letter-spacing: 1px; color: #567089; margin-top: 20px; }
+.company-footer-grid > div:not(:first-child) > a { display: block; font-size: 11px; margin-bottom: 9px; }
+.company-footer-grid > div > a:hover { color: var(--primary-dark); }
+.company-footer-grid .footer-address { margin-top: 0; display: flex; gap: 10px; align-items: flex-start; font-size: 11px; }
+.footer-address > svg { flex-shrink: 0; margin-top: 3px; color: var(--primary); }
+.company-footer-grid .footer-contact-line { display: flex !important; gap: 10px; align-items: center; margin-top: 14px; }
+.company-footer-grid .text-link { display: flex !important; align-items: center; gap: 10px; margin-top: 18px; }
+.language-scope-note { font-size: 10px; margin: 0 0 22px; }
+.floating-contact { background: #25d366; }
+.floating-contact:hover { background: #1da851; }
+.market-reach-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 65px; align-items: center; }
+.market-reach-grid h2 { font-size: 34px; color: #173b5b; line-height: 1.3; }
+.market-reach-description { margin-top: 22px; font-size: 13px; line-height: 1.9; }
+.market-country-panel { position: relative; display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; padding: 45px 24px; border: 1px solid #dce8f5; border-radius: 10px; background: #f2f7fd; }
+.market-country-line { position: absolute; top: 84px; left: 18%; right: 18%; border-top: 2px dashed #a6c8ea; }
+.market-country { position: relative; text-align: center; }
+.market-flag { display: block; width: 84px; height: 58px; margin: 10px auto 24px; overflow: hidden; border-radius: 7px; border: 1px solid #d9e3ed; box-shadow: 0 0 0 9px #fff,0 5px 20px #1d5d9c14; background: white; }
+.market-flag svg { width: 100%; height: 100%; display: block; }
+.market-country h3 { color: #204a70; font-size: 15px; margin-bottom: 9px; }
+.market-country p { font-size: 10px; line-height: 1.6; }
+@media (max-width: 950px) { .market-reach-grid { gap: 35px; } .market-reach-grid h2 { font-size: 29px; } .market-country-panel { padding: 30px 15px; gap: 10px; } .market-country-line { top: 69px; } .market-flag { width: 66px; height: 46px; } .market-country h3 { font-size: 13px; } }
+@media (max-width: 620px) { .market-reach-grid { grid-template-columns: 1fr; gap: 28px; } .market-country-panel { padding: 30px 15px; } .market-reach-grid h2 { font-size: 30px; } }
+@media (max-width: 1200px) {
+  .landing-header .header-search { display: none; }
+  .landing-header .nav { gap: 20px; }
+  .landing-hero-grid, .landing-about, .landing-contact-grid { gap: 50px; }
+  .landing-service-grid { gap: 15px; }
+  .landing-service-grid article { padding: 23px 18px; }
+  .landing-product-grid { gap: 20px; }
+}
+@media (max-width: 950px) {
+  .landing-hero { padding: 50px 0; }
+  .landing-hero-grid { grid-template-columns: 1.35fr 1fr; gap: 35px; }
+  .landing-hero h1 { font-size: 38px; letter-spacing: -1px; }
+  .landing-hero .eyebrow { font-size: 8px; letter-spacing: 1px; }
+  .landing-business-card { padding: 25px; }
+  .landing-business-card dd { font-size: 14px; }
+  .landing-section { padding: 60px 0; }
+  .landing-about { gap: 35px; }
+  .landing-about h2 { font-size: 31px; }
+  .landing-service-grid, .landing-product-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 25px; }
+  .landing-location-grid { gap: 35px; }
+  .landing-location h2 { font-size: 29px; }
+  .landing-contact-grid { gap: 35px; }
+  .landing-contact-grid h2 { font-size: 31px; }
+  .company-footer-grid { grid-template-columns: 1fr 1fr; gap: 35px; }
+}
+@media (max-width: 620px) {
+  .landing-header .header-actions { gap: 12px; }
+  .landing-header .header-inner { gap: 12px; }
+  .language-picker select { max-width: 83px; font-size: 10px; }
+  .language-picker > svg { display: none; }
+  .landing-hero { padding: 40px 0; }
+  .landing-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .landing-hero h1 { font-size: 36px; letter-spacing: -1px; }
+  .landing-hero .eyebrow { font-size: 8px; }
+  .landing-hero-text { font-size: 12px; margin-top: 20px; }
+  .landing-hero-actions { gap: 20px; }
+  .landing-business-card { padding: 24px; }
+  .landing-business-card > svg { width: 28px; height: 28px; margin-bottom: 10px; }
+  .landing-business-card dl { margin-top: 14px; }
+  .landing-business-card dl > div { padding: 12px 0; }
+  .company-landing .home-slideshow { margin-top: 20px; }
+  .landing-section { padding: 48px 0; scroll-margin-top: 75px; }
+  .landing-about, .landing-location-grid, .landing-contact-grid { grid-template-columns: 1fr; gap: 30px; }
+  .landing-about h2, .landing-heading h2, .landing-location h2, .landing-contact-grid h2 { font-size: 30px; }
+  .landing-heading-row { display: block; }
+  .landing-heading-row > .text-link { margin-top: 20px; }
+  .landing-service-grid { gap: 15px; }
+  .landing-service-grid article { padding: 22px 17px; }
+  .landing-service-grid h3 { font-size: 16px; }
+  .landing-service-grid p { font-size: 11px; }
+  .landing-product-grid { grid-template-columns: 1fr; gap: 30px; }
+  .landing-product-card > div { max-height: 380px; }
+  .landing-product-card h3 { margin-top: 17px; }
+  .landing-map { height: 320px; }
+  .landing-contact-form { padding: 23px; }
+  .company-footer-grid { gap: 30px 20px; }
+  .company-footer-grid > div:first-child, .company-footer-grid > div:last-child { grid-column: 1 / -1; }
+  .company-footer .footer-bottom { padding-right: 25px; }
+}

@@ -1,0 +1,12 @@
+.pacific-active-routes path { animation:pacific-route-flow 2s linear infinite; }
+.pacific-map-legend { display:flex; flex-wrap:wrap; align-items:center; gap:10px 22px; padding:13px 18px; border-top:1px solid #e1ebf5; background:#f8fbff; }
+.pacific-map-legend > span { display:inline-flex; align-items:center; gap:8px; color:#57738e; font-size:9px; line-height:1.6; }
+.pacific-map-legend i { display:inline-block; width:24px; height:0; border-top:2px dashed; flex-shrink:0; }
+.pacific-map-legend .pacific-legend-active { border-color:#2477d1; }
+.pacific-map-legend .pacific-legend-future { border-color:#9ec9ed; }
+@keyframes pacific-route-flow { to { stroke-dashoffset:-20; } }
+@media(max-width:620px) { .pacific-map-legend { gap:9px 15px; padding:12px; } .pacific-map-legend > span { font-size:8px; } }
+@media(prefers-reduced-motion:reduce) {
+  .pacific-active-routes path { animation:none; }
+  .pacific-moving-arrows,.pacific-origin-pulse { display:none; }
+}

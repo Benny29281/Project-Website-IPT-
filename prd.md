@@ -1,6 +1,8 @@
 # Product Requirements Document (PRD)
 ## Website Resmi PT Indonesia Pacific Trade
 
+> **Revisi landing page — 28 Oktober 2026:** Halaman utama memperkenalkan perusahaan, bidang usaha perdagangan/ekspor, layanan, produk, lokasi dan kontak. Navigasi utama mencakup About Us, Our Services, Products, Our Location, dan Contact Us. Landing page mendukung Indonesia, Inggris, Mandarin sederhana, dan Korea. Halaman detail/toko/checkout tetap ID/EN pada tahap ini, dengan pengalihan yang jelas untuk tautan dari Mandarin/Korea. Nama resmi mengikuti logo: PT Indonesia Pacific Trade. Lokasi dan telepon bersumber dari listing Google Maps perusahaan.
+
 > **Pembaruan ruang lingkup — 28 Oktober 2026:** Pengguna meminta website mendukung keranjang dan checkout dengan pembayaran online. Keputusan ini menggantikan pengecualian e-commerce pada bagian 5.2 untuk pengembangan saat ini. Integrasi awal memakai Midtrans Snap Redirect dalam sandbox; harga produk, ongkir, kredensial merchant, dan uji transaksi masih harus dilengkapi sebelum pembayaran diaktifkan. Enam produk referensi mencakup Instax SQ40, Wide 400 Black, Wide 400 Green, Mini Pink Lemonade, Square Black Frame, dan Wide Twin Pack.
 
 | Item | Keterangan |

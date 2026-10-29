@@ -3,6 +3,8 @@ import {createContext, useCallback, useContext, useEffect, useState} from 'react
 import Link from 'next/link';
 import {Check, ShoppingCart} from 'lucide-react';
 import {products, type Locale} from '@/lib/content';
+import type {SiteLocale} from '@/lib/locales';
+import {detailCopy} from '@/lib/detail-content';
 import {MAX_QUANTITY, normalizeCart, removePurchased, type CartItem, type CartState} from '@/lib/commerce';
 const storageKey = 'ipt-cart-v1';
 const slugs = products.map(p => p.slug);
@@ -33,17 +35,17 @@ export function CartProvider({children, settings}: {children: React.ReactNode; s
   return <CartContext.Provider value={{...settings,items:state.items,hydrated,storageAvailable,add,setQuantity,complete}}>{children}</CartContext.Provider>;
 }
 export function useCart() {const value = useContext(CartContext);if (!value) throw new Error('CartProvider is missing');return value;}
-export function money(value: number, locale: Locale) {return new Intl.NumberFormat(locale === 'id' ? 'id-ID' : 'en-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(value);}
-export function ProductPrice({slug,locale}: {slug: string; locale: Locale}) {
-  const {prices} = useCart();const price = prices[slug];return <p className={`product-price ${price === null ? 'price-pending' : ''}`}>{typeof price === 'number' ? money(price,locale) : locale === 'id' ? 'Harga belum tersedia' : 'Price not set yet'}</p>;
+export function money(value: number, locale: SiteLocale) {return new Intl.NumberFormat({id:'id-ID',en:'en-ID',zh:'zh-CN',ko:'ko-KR'}[locale],{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(value);}
+export function ProductPrice({slug,locale}: {slug: string; locale: SiteLocale}) {
+  const {prices} = useCart();const price = prices[slug];return <p className={`product-price ${price === null ? 'price-pending' : ''}`}>{typeof price === 'number' ? money(price,locale) : detailCopy[locale].price}</p>;
 }
-export function AddToCartButton({slug,locale,quantity = 1}: {slug: string; locale: Locale; quantity?: number}) {
+export function AddToCartButton({slug,locale,quantity = 1}: {slug: string; locale: SiteLocale; quantity?: number}) {
   const {add,items,hydrated} = useCart();const [added,setAdded] = useState(false);
   const full = (items.find(item => item.slug === slug)?.quantity || 0) + quantity > MAX_QUANTITY;
   useEffect(() => {if (!added) return;const timer = setTimeout(() => setAdded(false),1800);return () => clearTimeout(timer)}, [added]);
-  return <button className="button add-to-cart" disabled={!hydrated || full} onClick={() => {add(slug,quantity);setAdded(true)}}>{added ? <Check size={16}/> : <ShoppingCart size={16}/>}<span aria-live="polite">{full ? (locale === 'id' ? 'Maks. 99 per produk' : 'Max. 99 per product') : added ? (locale === 'id' ? 'Ditambahkan' : 'Added to cart') : (locale === 'id' ? 'Tambah ke Keranjang' : 'Add to Cart')}</span></button>;
+  return <button className="button add-to-cart" disabled={!hydrated || full} onClick={() => {add(slug,quantity);setAdded(true)}}>{added ? <Check size={16}/> : <ShoppingCart size={16}/>}<span aria-live="polite">{full ? detailCopy[locale].max : added ? detailCopy[locale].added : detailCopy[locale].add}</span></button>;
 }
-export function CartLink({locale}: {locale: Locale}) {
+export function CartLink({locale,label}: {locale: Locale;label?:string}) {
   const {items,hydrated} = useCart();const count = hydrated ? items.reduce((sum,item) => sum+item.quantity,0) : 0;
-  return <Link className="cart-link" href={`/${locale}/cart`} aria-label={`${locale === 'id' ? 'Keranjang' : 'Cart'} (${count})`}><ShoppingCart size={22}/><span>{count}</span></Link>;
+  return <Link className="cart-link" href={`/${locale}/cart`} aria-label={`${label || (locale === 'id' ? 'Keranjang' : 'Cart')} (${count})`}><ShoppingCart size={22}/><span>{count}</span></Link>;
 }
